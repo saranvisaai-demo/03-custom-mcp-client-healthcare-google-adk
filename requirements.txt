@@ -1,0 +1,3 @@
+google-adk[mcp]
+mcp>=1.24,<3
+python-dotenv
