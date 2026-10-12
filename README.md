@@ -57,9 +57,15 @@ MCP_URL=http://127.0.0.1:8000/mcp
    the repo root:
 
    ```bash
-   adk web                        # launch the ADK dev UI and chat with the agent in a browser
+   adk web --port 8001            # launch the ADK dev UI and chat with the agent in a browser
    adk run mcp_client_google_adk  # run the agent directly in the terminal
    ```
+
+   > **Port conflict:** `adk web` defaults to port 8000, same as the
+   > Healthcare MCP server. Running both on the default port fails with an
+   > "address already in use" error. Keep the MCP server on `:8000` (it's
+   > what `MCP_URL` points at) and move the ADK dev UI elsewhere with
+   > `--port 8001` (or any free port).
 
 There is no custom entrypoint script, test suite, or lint config in this
 project — `adk web`/`adk run` and manual inspection are the only ways to

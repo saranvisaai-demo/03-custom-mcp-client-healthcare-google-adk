@@ -42,9 +42,15 @@ containing `agent.py` with a module-level `root_agent`), so the ADK CLI can
 discover and run it from the repo root:
 
 ```bash
-adk web                        # launch the ADK dev UI and chat with the agent in a browser
+adk web --port 8001            # launch the ADK dev UI and chat with the agent in a browser
 adk run mcp_client_google_adk  # run the agent directly in the terminal
 ```
+
+**Port conflict:** `adk web` defaults to port 8000, the same port the
+Healthcare MCP server binds to. Running both unchanged causes an "address
+already in use" error. Keep the MCP server on `:8000` (it's what `MCP_URL`
+points at) and move the ADK dev UI to another port with `--port` instead of
+touching the server's port.
 
 There is no custom entrypoint script, test suite, or lint config in this
 project — `adk web`/`adk run` and manual inspection are the only ways to
